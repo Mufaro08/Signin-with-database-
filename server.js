@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV !== "production") {
-    require("dotenv").config()
+  require("dotenv").config()
 }
 
 
@@ -26,7 +26,7 @@ const users = []
 app.use(express.urlencoded({extended: false}))
 app.use(flash())
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SECRETE_KEY,
     resave: false, // We wont resave the session variable if nothing is changed
     saveUninitialized: false
 }))
@@ -101,4 +101,7 @@ function checkNotAuthenticated(req, res, next){
     next()
 }
 
-app.listen(3000)
+app.listen(3000, '0.0.0.0',() => {
+    console.log('Server running.....');
+
+})
